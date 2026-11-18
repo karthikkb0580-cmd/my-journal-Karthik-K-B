@@ -1,0 +1,17 @@
+{% extends "journal/base.html" %}
+{% block title %}My articles{% endblock %}
+{% block content %}
+<h1>My articles</h1>
+<p><a class="button" href="{% url 'journal:article_create' %}">Write an article</a></p>
+{% for article in articles %}
+    <article class="card">
+        <h2>{{ article.title }}</h2>
+        <p>Status: {% if article.is_published %}Published{% else %}Draft{% endif %}</p>
+        <a href="{% url 'journal:article_update' article.pk %}">Edit</a>
+        · <a href="{% url 'journal:article_delete' article.pk %}">Delete</a>
+        {% if article.is_published %} · <a href="{{ article.get_absolute_url }}">View public page</a>{% endif %}
+    </article>
+{% empty %}
+    <p>You have not written any articles yet.</p>
+{% endfor %}
+{% endblock %}

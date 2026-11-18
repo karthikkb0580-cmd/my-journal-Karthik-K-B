@@ -1,0 +1,26 @@
+{% extends "journal/base.html" %}
+{% load static %}
+{% block title %}Home | Learning Journal{% endblock %}
+{% block content %}
+<section class="hero">
+    <p class="eyebrow">DJANGO + POSTGRESQL PRACTICAL</p>
+    <img class="learning-image" src="{% static 'journal/learning-mark.svg' %}" alt="Notebook illustration">
+    <h1>Learn how a real Django website works.</h1>
+    <p>Explore articles, categories, user accounts, forms, database relationships, and PostgreSQL.</p>
+    <p data-demo-message>Press the button to see a small JavaScript interaction.</p>
+    <button type="button" data-demo-button>Try JavaScript</button>
+    <p><a class="button" href="{% url 'journal:article_list' %}">Explore articles</a></p>
+</section>
+
+<h2>Latest published articles</h2>
+{% for article in latest_articles %}
+    <article class="card">
+        <h3><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h3>
+        <p>{{ article.subtitle }}</p>
+        <small>By {{ article.author.username }}</small>
+    </article>
+{% empty %}
+    <p>No published articles yet. Add one in Admin and tick "Is published".</p>
+{% endfor %}
+<script src="{% static 'journal/app.js' %}" defer></script>
+{% endblock %}

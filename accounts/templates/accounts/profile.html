@@ -1,0 +1,9 @@
+{% extends "journal/base.html" %}
+{% block title %}My profile{% endblock %}
+{% block content %}
+<h1>My profile</h1>
+<p><strong>Username:</strong> {{ request.user.username }}</p>
+<p><strong>Display name:</strong> {{ profile.display_name|default:"Not added" }}</p>
+<p><strong>About:</strong> {{ profile.bio|default:"No biography added" }}</p>
+<a class="button" href="{% url 'accounts:profile_edit' %}">Edit profile</a>
+{% endblock %}

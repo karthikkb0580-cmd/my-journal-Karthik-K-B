@@ -1,0 +1,10 @@
+# Python packages needed for Day 2.
+# Install them with:   pip install -r requirements.txt
+# (run this from the Day-02-Django folder, with your virtual environment active)
+
+Django>=5.2,<5.3            # the web framework
+psycopg[binary]>=3.2,<4     # lets Python talk to PostgreSQL
+dj-database-url>=2.3,<3     # turns DATABASE_URL into Django database settings
+python-dotenv>=1.0,<2       # reads your private .env file
+whitenoise>=6.9,<7          # serves CSS/JS/images when the site is on the internet (Lesson 17)
+gunicorn>=23,<24            # runs Django on a Linux web server (Lesson 17)

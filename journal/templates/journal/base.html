@@ -1,0 +1,37 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Django Learning Journal{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'journal/style.css' %}">
+</head>
+<body>
+<header class="site-header">
+    <a class="brand" href="{% url 'journal:home' %}">Learning Journal</a>
+                <nav>
+        <a href="{% url 'journal:article_list' %}">Articles</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'journal:my_articles' %}">My articles</a>
+            <a href="{% url 'journal:article_create' %}">Write</a>
+            <a href="{% url 'accounts:profile' %}">Profile</a>
+            <span class="muted">Hi, {{ user.username }}</span>
+            <form class="inline-form" method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="link-button">Log out</button>
+            </form>
+        {% else %}
+            <a href="{% url 'login' %}">Log in</a>
+            <a href="{% url 'accounts:register' %}">Register</a>
+        {% endif %}
+    </nav>
+
+
+</header>
+<main class="container">
+    {% block content %}{% endblock %}
+</main>
+<footer class="site-footer">Django Day 2 practical learning application</footer>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% extends "journal/base.html" %}
+{% block title %}Articles{% endblock %}
+{% block content %}
+<h1>Published articles</h1>
+
+<form method="get" class="filter-form">
+    <label for="q">Search articles</label>
+    <input id="q" type="search" name="q" value="{{ query }}" placeholder="Search by title or text">
+
+    <label for="category">Category</label>
+    <select id="category" name="category">
+        <option value="">All categories</option>
+        {% for category in categories %}
+            <option value="{{ category.id }}" {% if selected_category == category.id|stringformat:"s" %}selected{% endif %}>{{ category.name }}</option>
+        {% endfor %}
+    </select>
+
+    <button class="button" type="submit">Search</button>
+</form>
+
+{% for article in articles %}
+    <article class="card">
+        <h2><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h2>
+        {% if article.subtitle %}<p>{{ article.subtitle }}</p>{% endif %}
+        <p>{{ article.body|truncatewords:35 }}</p>
+        <small>By {{ article.author.username }} · {{ article.created_at|date:"d M Y" }}</small>
+        <p>{% for category in article.categories.all %}<span class="tag">{{ category.name }}</span>{% endfor %}</p>
+    </article>
+{% empty %}
+    <p>No articles match your search.</p>
+{% endfor %}
+{% endblock %}

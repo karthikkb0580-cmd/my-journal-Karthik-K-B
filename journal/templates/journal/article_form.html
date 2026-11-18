@@ -1,0 +1,12 @@
+{% extends "journal/base.html" %}
+{% block title %}{{ page_heading }}{% endblock %}
+{% block content %}
+<h1>{{ page_heading }}</h1>
+<p>Choose whether this article should be published. Drafts are visible only in your own article list and Admin.</p>
+<form method="post" class="card form-card">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="button" type="submit">Save article</button>
+    <a href="{% url 'journal:my_articles' %}">Cancel</a>
+</form>
+{% endblock %}

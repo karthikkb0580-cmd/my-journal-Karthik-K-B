@@ -1,0 +1,23 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; color: #1f2937; background: #f4f6f9; line-height: 1.6; }
+a { color: #1557a0; }
+.site-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem 5%; background: #fff; border-bottom: 1px solid #dce2ea; }
+.site-header nav { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+.brand { font-weight: 700; font-size: 1.1rem; text-decoration: none; color: #17243a; }
+.container { max-width: 960px; margin: 2rem auto; padding: 0 1rem; min-height: 68vh; }
+.hero, .card { background: #fff; border: 1px solid #e0e5ec; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; }
+.hero { padding: 2.5rem; }
+.eyebrow { letter-spacing: .12em; font-size: .8rem; font-weight: bold; color: #53657d; }
+.learning-image { width: 120px; height: auto; }
+.button, button { display: inline-block; border: 0; border-radius: 7px; padding: .65rem 1rem; background: #174f91; color: white; text-decoration: none; cursor: pointer; font: inherit; }
+.danger { background: #a52a2a; }
+.link-button { background: transparent; color: #1557a0; padding: 0; }
+.inline-form { display: inline; margin: 0; }
+input, textarea, select { display: block; width: 100%; max-width: 100%; padding: .6rem; border: 1px solid #aeb8c5; border-radius: 6px; margin: .25rem 0 .8rem; }
+label { font-weight: bold; }
+.tag { display: inline-block; padding: .15rem .5rem; margin: .1rem; border-radius: 1rem; background: #e7eef8; font-size: .85rem; }
+.muted, small { color: #667085; }
+.subtitle { font-size: 1.15rem; }
+.errorlist { color: #a52a2a; }
+.site-footer { padding: 1.5rem; text-align: center; color: #667085; }
+.filter-form { background: white; padding: 1rem; border-radius: 10px; margin-bottom: 1rem; }

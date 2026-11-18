@@ -1,0 +1,12 @@
+{% extends "journal/base.html" %}
+{% block title %}{{ article.title }}{% endblock %}
+{% block content %}
+<article class="card">
+    <h1>{{ article.title }}</h1>
+    {% if article.subtitle %}<p class="subtitle">{{ article.subtitle }}</p>{% endif %}
+    <p class="muted">By {{ article.author.username }} · {{ article.created_at|date:"d M Y, H:i" }}</p>
+    <div>{{ article.body|linebreaks }}</div>
+    <p>{% for category in article.categories.all %}<span class="tag">{{ category.name }}</span>{% endfor %}</p>
+</article>
+<a href="{% url 'journal:article_list' %}">Back to articles</a>
+{% endblock %}
